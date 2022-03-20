@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, StatusBar, SafeAreaView } from "react-native";
-import Header from "./src/components/Header";
-import AlbumList from "./src/components/AlbumList";
+import Header from "./wek4-hw/src/components/Header";
+import AlbumList from "./wek4-hw/src/components/AlbumList";
 
 const App = () => {
   return (
