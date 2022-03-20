@@ -1,6 +1,6 @@
 [
    {
-   "title": "Hot Songs",
+   "title": "Popular Books",
    "horizontal": true,
    "data": [
       {
@@ -64,7 +64,7 @@
          }
    ]},
    {
-      "title": "Daily Songs",
+      "title": "Newest",
       "horizontal": true,
       "data": [
          {
