@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   imageStyle: {
-    height: 130,
-    width: 130,
+    height: 300,
+    width: 250,
   }
 });
 

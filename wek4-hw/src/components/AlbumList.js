@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, FlatList, SectionList, StyleSheet } from "react-native";
 import AlbumDetail from "./AlbumDetail";
-import HotAlbumDetail from "./HotAlbumDetail";
+import HotAlbumDetail from "./HotAlbumDetail.js";
 import sections from "../json/album_section.json";
 
 const Albumlist = () => {
@@ -42,7 +42,7 @@ const Albumlist = () => {
 const styles = StyleSheet.create({
   sectionHeader: {
     fontWeight: '600',
-    fontSize: 18,
+    fontSize: 20,
     paddingTop: 20,
     paddingBottom: 5,
     paddingLeft: 10,
