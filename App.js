@@ -1,22 +1,20 @@
-import React from "react";
-import { StyleSheet, StatusBar, SafeAreaView } from "react-native";
-import Header from "./wek4-hw/src/components/Header";
-import AlbumList from "./wek4-hw/src/components/AlbumList";
+import React from 'react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { NativeBaseProvider } from 'native-base';
+
+import Navigation from './wek4-hw/src/navigation/index';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar />
-      <Header />
-      <AlbumList />
-    </SafeAreaView>
-  );
-};
+    <SafeAreaProvider>
+      {/* <SafeAreaView style={{ flex: 1 }}> */}
+        <NativeBaseProvider>
+          <Navigation />
+        </NativeBaseProvider>
+      {/* </SafeAreaView> */}
+    </SafeAreaProvider>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+  );
+}
 
 export default App;

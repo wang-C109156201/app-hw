@@ -1,53 +1,17 @@
 import React from "react";
-import { Text, FlatList, SectionList, StyleSheet } from "react-native";
+import { FlatList } from "react-native";
 import AlbumDetail from "./AlbumDetail";
-import HotAlbumDetail from "./HotAlbumDetail.js";
-import sections from "../json/album_section.json";
 
-const Albumlist = () => {
-  const renderSectionHeader = ({section}) => (
-    <>
-      <Text style={styles.sectionHeader}>{section.title}</Text>
-      {section.horizontal ? (
-        <FlatList
-          horizontal={true}
-          data={section.data}
-          renderItem={({ item }) => <HotAlbumDetail album={item} />}
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={ item => item.title }
-        />
-      ) : null}
-    </>
-  );
-  const renderItem = ({ item, section }) => {
-    if (section.horizontal) {
-      return null;
-    }
-    return <AlbumDetail album={item} />
-  };
-
+const AlbumList = ({ list, navigation }) => {
+  const renderItem = ({ item }) => <AlbumDetail album={item} navigation={navigation} />;
   return (
-    <SectionList 
-      sections={sections}
-      contentContainerStyle={{ paddingHorizontal: 10 }}
-      stickySectionHeadersEnabled={false}
-      showsHorizontalScrollIndicator={false}
-      renderSectionHeader={renderSectionHeader}
+    <FlatList
+      data={list}
       renderItem={renderItem}
-      keyExtractor={ item => item.title }
-    />
-  );
-};
+      keyExtractor={item => item.title}
+    />    
+  );  
+}
 
-const styles = StyleSheet.create({
-  sectionHeader: {
-    fontWeight: '600',
-    fontSize: 20,
-    paddingTop: 20,
-    paddingBottom: 5,
-    paddingLeft: 10,
-    textTransform: 'uppercase',
-  },
-})
+export default AlbumList;
 
-export default Albumlist;
