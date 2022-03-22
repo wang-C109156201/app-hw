@@ -1,7 +1,5 @@
 import React from 'react';
-import { Linking } from 'react-native';
-import { Center, ScrollView, Box, AspectRatio, Text, Heading, Image, Button } from "native-base";
-
+import { StyleSheet, ScrollView, Text, View, Image, Button, Linking } from 'react-native';
 
 const DetailScreen = ({ route }) => {
   const { title, 
@@ -12,42 +10,87 @@ const DetailScreen = ({ route }) => {
     description
   } = route.params;
   return (
-    <Center>
-      <ScrollView>
-        <AspectRatio w="100%" ratio={16 / 9}>
-          <Image
-            source={{uri: image }}
-            alt='albumImage'
-          />
-        </AspectRatio>
-        <Box bg="#fff" padding="2" margin="2">
-          <Center>
-            <Heading pt={1} fontSize="2xl" color='#6099E4'>Discount Now!</Heading>
-            <Heading fontSize="4xl">Price: ${price}</Heading>
-          </Center>
-          <Button 
-            mt="4"
-            onPress={() => Linking.openURL(url)}
-          >
-            Buy Now !
-          </Button>   
-        </Box>
-        <Box bg="#fff" padding="2" margin="2">
-            <Text>
-              <Text bold>Artist: </Text>
-              {artist}
-            </Text>
-            <Text>            
-              <Text bold>Title: </Text>
-              {title}
-            </Text>
-            <Text mt='15' bold>Descriptions:</Text>
-            <Text>{'\t'}{description}</Text>
-        </Box>
-      </ScrollView>      
-    </Center>
-
+    <ScrollView style={styles.bgcolorStyle}>
+      <View style={styles.imageboxStyle}>
+        <Image
+          style={styles.imageStyle}
+          source={{
+            uri: image
+          }}
+        />
+      </View>
+      <View style={styles.cardContainerStyle}>
+        <Text style={styles.discountStyle} >Yves Saint Laurent</Text>
+        <Text style={styles.authorStyle}>Suzy Menkes</Text>
+        {/*<Text style={styles.priceStyle} >Price: ${price}</Text>*/}
+      
+      </View>
+      <View style={styles.cardContainerStyle}>
+        <Text style={{lineHeight: 25,textAlign: 'center'}}>{'\t'}{description}</Text>
+      </View>
+      <View style={styles.ButtomStyle}>
+        <Button 
+          onPress={() => Linking.openURL(url)}
+          title="Buy  Now  FOR  $46.99"
+          color="#6200EE" 
+        />   
+      </View>
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },  
+  bgcolorStyle:{
+    backgroundColor:"#fff"
+  },
+  imageStyle: {
+    height: 370,
+    width:270,
+    flexDirection:"row",
+    justifyContent:"center",
+    marginTop:8,
+    backgroundColor: '#fff',
+   
+  },
+  imageboxStyle: {
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems: 'center',
+    marginTop:10,
+    backgroundColor: '#fff',
+   
+  },
+  ButtomStyle: {
+    backgroundColor:"#fff",
+    marginHorizontal:130,
+    borderRadius:5,
+    
+  },
+  cardContainerStyle: {
+    backgroundColor: '#fff',
+    padding: 10,
+    marginHorizontal: 10,
+    marginTop: 10
+  },
+  discountStyle: {
+    color: '#000',
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  authorStyle: {
+    color: '#666666',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 14,
+    marginVertical: 10,
+  }
+});
 
 export default DetailScreen;

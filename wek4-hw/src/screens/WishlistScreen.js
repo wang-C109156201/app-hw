@@ -1,14 +1,14 @@
 import React from 'react';
 import { Center, Text } from "native-base";
 
-const SettingsScreen = () => {
+const Wishlist = () => {
     return (
-    <Center bg="emerald.100" flex={1}>
+    <Center bg="gray" flex={1}>
         <Text fontSize={30}>
-            This is a Setting Page
+            Wishlist
         </Text>              
     </Center>
     );
 }
 
-export default SettingsScreen;
+export default Wishlist;

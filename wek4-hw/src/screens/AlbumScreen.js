@@ -7,7 +7,7 @@ const AlbumScreen = ({ navigation }) => {
   return (
     <Box>
       <AlbumList 
-        list={albumData.albumList}
+        list={albumData.data}
         navigation={navigation}
       />
     </Box>

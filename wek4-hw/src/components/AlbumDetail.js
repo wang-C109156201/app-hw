@@ -3,6 +3,7 @@ import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable } from "native
 
 const AlbumDetail = ({ album, navigation }) => {
   return (
+    
     <Box marginX={1} marginBottom={2} borderRadius={3} shadow={2}>
       <HStack bg='#fff'>
         <AspectRatio w="50" ratio={1}>
