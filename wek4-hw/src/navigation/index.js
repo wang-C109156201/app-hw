@@ -2,7 +2,7 @@ import React,{useState}  from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Pressable } from "native-base";
+import { Pressable,Button } from "native-base";
 import { Text, TouchableOpacity } from "react-native";
 import { shadowOffset } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -96,6 +96,14 @@ const HomeStack = () => {
             fontWeight: '400',
             fontSize: 20
           },
+        headerRight:() =>(
+          <MaterialCommunityIcons 
+          name={'magnify'} 
+          color={'black'} 
+          size={25}
+          onPress={ () => {alert("Search")}} 
+        />
+          )
         }}
       />
       <Stack.Screen
@@ -123,14 +131,12 @@ const HomeStack = () => {
             </Pressable>
             ),
           headerRight:() =>(
-            <Pressable>
-                <MaterialCommunityIcons 
-                name={'bookmark-outline'} 
-                color={'black'} 
-                size={30}
-                onPress={ () => <MaterialCommunityIcons name={'bookmark'} color={'#6200EE'} size={25} />}
-            />
-            </Pressable>
+            <MaterialCommunityIcons 
+            name={'bookmark-outline'} 
+            color={'black'} 
+            size={25}
+            onPress={ () => {alert("Search")}} 
+        />
           )
         })}
       />

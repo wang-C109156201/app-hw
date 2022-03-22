@@ -1,36 +1,65 @@
 import React from "react";
-import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable } from "native-base"
+import { ScrollView } from "native-base";
+import { StyleSheet, View, Image,Box, HStack, VStack, AspectRatio, Text, Pressable } from "react-native"
 
-const AlbumDetail = ({ album, navigation }) => {
+const AlbumDetail = props => {
+  let { album,navigation } = props;
   return (
-    
-    <Box marginX={1} marginBottom={2} borderRadius={3} shadow={2}>
-      <HStack bg='#fff'>
-        <AspectRatio w="50" ratio={1}>
-          <Image
-            margin="1"
-            source={{ uri: album.thumbnail_image }}
-            alt="artist"
-          />
-        </AspectRatio>
-        <VStack paddingLeft={2} justifyContent="space-around">
-          <Text>{album.title}</Text>
-          <Text>{album.artist}</Text>
-        </VStack>
-      </HStack>
-      <Box p={1} bg="#fff">
-        <Pressable 
-          onPress={() => navigation.navigate('Detail', album)}
-        >
-          <AspectRatio w="100%" ratio={1}>
-            <Image
-              source={{ uri: album.image }}
-              alt="album"
-            />            
-          </AspectRatio>
-        </Pressable>
-      </Box>   
-    </Box>
-  )};
+     <ScrollView  style={{backgroundColor: 'white'}}>
+       
+       <View style={styles.cardSectionStyle}>
+       <Pressable 
+            onPress={() => navigation.navigate('Detail', album)}
+          >
+         <Image
+           style={styles.imageStyle}
+           source={{uri: album.image}}
+         />
+        </Pressable> 
+       </View>
+       <View style={[styles.thumbnailContainerStyle, 
+                     styles.cardSectionStyle]}>
+         <View style={styles.headerContentStyle}>
+           <Text style={styles.titleStyle}>{album.title}</Text>
+           <Text style={{color: 'gray'}}>{album.artist}</Text>
+         </View>
+       </View>
+     </ScrollView >
+ )};
 
+const styles = StyleSheet.create({
+ thumbnailContainerStyle: {
+   flexDirection: "row",
+   justifyContent: "flex-start",
+   backgroundColor: "#fff",
+ },
+ thumbnailStyle: {
+   height: 50,
+   width: 50,
+   margin: 5
+ },
+ headerContentStyle: {
+   flexDirection: "column",
+   justifyContent: "space-around",
+   
+ },
+ 
+ cardSectionStyle: {
+   padding: 5,
+   backgroundColor: "#fff",
+   borderColor: "#fff",
+   borderBottomWidth: 1,
+   
+ },
+ titleStyle: {
+  fontSize:20,
+  fontWeight:"700",
+  paddingBottom:5,
+  },
+ imageStyle: {
+   height:250,
+   width: 165,
+   borderRadius:5,
+ }
+});
 export default AlbumDetail;

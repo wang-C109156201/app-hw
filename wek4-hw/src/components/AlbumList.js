@@ -3,7 +3,7 @@ import { FlatList ,SectionList,StyleSheet,Text } from "react-native";
 import AlbumDetail from "./AlbumDetail";
 import sections from "../json/albums.json";
 
-const AlbumList = ({ list, navigation }) => {
+const AlbumList = ({ list, navigation,album }) => {
   const renderSectionHeader = ({section}) => (
     <>
       <Text style={styles.sectionHeader}>{section.title}</Text>
@@ -27,7 +27,7 @@ const AlbumList = ({ list, navigation }) => {
   return (
     <SectionList 
       sections={sections}
-      contentContainerStyle={{ paddingHorizontal: 10 ,paddingBottom:61}}
+      contentContainerStyle={{ paddingHorizontal: 10 ,paddingBottom:61,backgroundColor:"white"}}
       stickySectionHeadersEnabled={false}
       showsHorizontalScrollIndicator={false}
       renderSectionHeader={renderSectionHeader}
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     paddingTop: 8,
     paddingBottom: 8,
-    paddingLeft: 20,
+    paddingLeft: 10,
+    backgroundColor:"white"
   },
 })
 export default AlbumList;
