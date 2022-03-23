@@ -27,7 +27,7 @@ const AlbumList = ({ list, navigation,album }) => {
   return (
     <SectionList 
       sections={sections}
-      contentContainerStyle={{ paddingHorizontal: 10 ,paddingBottom:61,backgroundColor:"white"}}
+      contentContainerStyle={{ paddingHorizontal: 10 ,paddingBottom:40,paddingTop:0,backgroundColor:"white"}}
       stickySectionHeadersEnabled={false}
       showsHorizontalScrollIndicator={false}
       renderSectionHeader={renderSectionHeader}
@@ -41,10 +41,11 @@ const styles = StyleSheet.create({
     fontFamily:'Roboto',
     fontWeight: 'bold',
     fontSize: 24,
-    paddingTop: 8,
+    paddingTop: 10,
     paddingBottom: 8,
     paddingLeft: 10,
-    backgroundColor:"white"
+    backgroundColor:"white",
+    
   },
 })
 export default AlbumList;

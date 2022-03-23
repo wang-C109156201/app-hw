@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Pressable,Button } from "native-base";
 import { Text, TouchableOpacity } from "react-native";
-import { shadowOffset } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import { backgroundColor, shadowOffset } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import AlbumScreen from '../screens/AlbumScreen';
@@ -66,7 +66,6 @@ const MyTabs = () => {
         options={{
           title: "My books",
           headerTitleStyle: {
-            fontWeight: '400',
             fontSize: 20
           },
           tabBarIcon: ({ color }) => (
@@ -80,6 +79,10 @@ const MyTabs = () => {
 }
 
 const HomeStack = () => {
+  const [toggle, setToggle] = useState(true);
+    const toggleFunction = () => {
+        setToggle(!toggle);
+    };
   return (
     <Stack.Navigator
       //screenOptions={{
@@ -90,12 +93,25 @@ const HomeStack = () => {
         name="Home"
         component={AlbumScreen}
         options={{
-          
-          title: albumData.albumTitle,
+          headerShadowVisible:false,
+          title: " ",
           headerTitleStyle: {
             fontWeight: '400',
-            fontSize: 20
+            fontSize: 20,
+            backgroundColor:"white",
           },
+          headerStyle: {
+            backgroundColor: 'white'
+          },
+        headerLeft: () => (
+          <Pressable>
+              <MaterialCommunityIcons 
+              name={'menu'} 
+              color={'black'} 
+              size={30}
+              />
+          </Pressable>
+        ),
         headerRight:() =>(
           <MaterialCommunityIcons 
           name={'magnify'} 
@@ -114,7 +130,7 @@ const HomeStack = () => {
           headerStyle: {
             backgroundColor: '#fff',
           },
-          
+          headerShadowVisible:false,
           headerTintColor: '#000',
           headerTitleStyle: {
             fontWeight: '400',
@@ -131,12 +147,11 @@ const HomeStack = () => {
             </Pressable>
             ),
           headerRight:() =>(
-            <MaterialCommunityIcons 
-            name={'bookmark-outline'} 
-            color={'black'} 
-            size={25}
-            onPress={ () => {alert("Search")}} 
-        />
+            <TouchableOpacity onPress={() => toggleFunction()}>
+                        <Text>{toggle ? <MaterialCommunityIcons name={'bookmark-outline'} color={'black'} size={25} />:
+                                        <MaterialCommunityIcons name={'bookmark'} color={'#6200EE'} size={25} />}
+                        </Text>
+                    </TouchableOpacity>
           )
         })}
       />

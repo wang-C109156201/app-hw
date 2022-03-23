@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, ScrollView, Text, View, Image, Button, Linking } from 'react-native';
+import Star from 'react-native-star-view';
 
 const DetailScreen = ({ route }) => {
   const { title, 
@@ -20,13 +21,17 @@ const DetailScreen = ({ route }) => {
         />
       </View>
       <View style={styles.cardContainerStyle}>
-        <Text style={styles.discountStyle} >Yves Saint Laurent</Text>
-        <Text style={styles.authorStyle}>Suzy Menkes</Text>
+        <Text style={styles.discountStyle} >{title}</Text>
+        <Text style={styles.authorStyle}>{artist}</Text>
         {/*<Text style={styles.priceStyle} >Price: ${price}</Text>*/}
-      
+        <View style={{flexDirection:"row",justifyContent: 'center'}}>
+            <Star score={4} style={styles.starStyle}/>
+            <Text style={styles.fostarstyle}>4.0</Text>
+            <Text style={styles.fistarstyle}>/5.0</Text>
+          </View>
       </View>
       <View style={styles.cardContainerStyle}>
-        <Text style={{lineHeight: 25,textAlign: 'center'}}>{'\t'}{description}</Text>
+        <Text style={{lineHeight: 30,textAlign: 'center',fontSize: 17}}>{'\t'}{description}</Text>
       </View>
       <View style={styles.ButtomStyle}>
         <Button 
@@ -35,6 +40,7 @@ const DetailScreen = ({ route }) => {
           color="#6200EE" 
         />   
       </View>
+      
     </ScrollView>
   );
 }
@@ -49,6 +55,15 @@ const styles = StyleSheet.create({
   bgcolorStyle:{
     backgroundColor:"#fff"
   },
+  starStyle:{
+    width:86,
+    height:18,
+    alignItems: 'center',
+    justifyContent: 'center',    
+  },
+  startextStyle:{
+    flexWrap:"nowrap",
+  },
   imageStyle: {
     height: 370,
     width:270,
@@ -56,6 +71,7 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     marginTop:8,
     backgroundColor: '#fff',
+    borderRadius:15,
    
   },
   imageboxStyle: {
@@ -68,15 +84,15 @@ const styles = StyleSheet.create({
   },
   ButtomStyle: {
     backgroundColor:"#fff",
-    marginHorizontal:130,
+    marginHorizontal:100,
     borderRadius:5,
-    
+    paddingTop:30,
   },
   cardContainerStyle: {
     backgroundColor: '#fff',
-    padding: 10,
-    marginHorizontal: 10,
-    marginTop: 10
+    marginTop:15,
+    marginHorizontal: 7,
+    
   },
   discountStyle: {
     color: '#000',
