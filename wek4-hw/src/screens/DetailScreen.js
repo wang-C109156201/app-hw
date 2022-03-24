@@ -5,7 +5,7 @@ import Star from 'react-native-star-view';
 const DetailScreen = ({ route }) => {
   const { title, 
     artist,
-    price,
+    star,
     url,
     image,
     description
@@ -25,8 +25,8 @@ const DetailScreen = ({ route }) => {
         <Text style={styles.authorStyle}>{artist}</Text>
         {/*<Text style={styles.priceStyle} >Price: ${price}</Text>*/}
         <View style={{flexDirection:"row",justifyContent: 'center'}}>
-            <Star score={4} style={styles.starStyle}/>
-            <Text style={styles.fostarstyle}>4.0</Text>
+            <Star score={star} style={styles.starStyle}/>
+            <Text style={styles.fostarstyle}>{star}.0</Text>
             <Text style={styles.fistarstyle}>/5.0</Text>
           </View>
       </View>
